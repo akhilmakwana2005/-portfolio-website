@@ -66,9 +66,17 @@ const Navbar = () => {
           </div>
           
           <div className="flex items-center space-x-4">
+            <a 
+              href="/resume.pdf" 
+              download="Akhil_Makwana_Resume.pdf"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+            >
+              Resume
+            </a>
+            
             <button 
               onClick={toggleDarkMode} 
-              className="text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 focus:outline-none transition-colors"
+              className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none transition-colors"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}

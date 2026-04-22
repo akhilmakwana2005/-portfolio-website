@@ -1,24 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPaperPlane, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('submitting');
-    
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      
-      setTimeout(() => {
-        setStatus('idle');
-      }, 3000);
-    }, 1500);
+
+    // Replace these with your own EmailJS service ID, template ID, and public key
+    // You can get them from https://www.emailjs.com/
+    const SERVICE_ID = "service_xxxxxxx"; 
+    const TEMPLATE_ID = "template_xxxxxxx";
+    const PUBLIC_KEY = "your_public_key";
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+        console.log(result.text);
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        
+        setTimeout(() => {
+          setStatus('idle');
+        }, 3000);
+      }, (error) => {
+        console.log(error.text);
+        setStatus('error');
+        
+        setTimeout(() => {
+          setStatus('idle');
+        }, 3000);
+      });
   };
 
   const handleChange = (e) => {
@@ -70,9 +86,22 @@ const Contact = () => {
                 <p className="text-slate-600 dark:text-slate-300">Thanks for reaching out, I'll get back to you soon.</p>
               </motion.div>
             )}
+
+            {status === 'error' && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50/95 dark:bg-slate-900/95 z-20 rounded-2xl backdrop-blur-sm"
+              >
+                <FaTimesCircle size={64} className="text-red-400 mb-4" />
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Oops!</h3>
+                <p className="text-slate-600 dark:text-slate-300">Something went wrong. Please try again later.</p>
+              </motion.div>
+            )}
           </AnimatePresence>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Name</label>

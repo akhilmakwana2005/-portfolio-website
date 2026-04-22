@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { FaArrowDown, FaCode, FaRocket } from "react-icons/fa";
+import { FaArrowDown, FaCode, FaRocket, FaDownload } from "react-icons/fa";
 
 const Hero = () => {
   const [init, setInit] = useState(false);
@@ -159,12 +159,23 @@ const Hero = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href="/resume.pdf"
+              download="Akhil_Makwana_Resume.pdf"
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors"
+            >
+              <FaDownload size={16} />
+              Download CV
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#contact"
-              className="w-full sm:w-auto px-8 py-3 rounded-xl glass-card text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+              className="w-full sm:w-auto px-8 py-3 rounded-xl glass-card text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-slate-300 dark:border-slate-700"
             >
               Contact Me
             </motion.a>
           </div>
+
         </motion.div>
 
         <motion.div

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import TechMarquee from "./TechMarquee";
 
 const Skills = () => {
   const skills = [
@@ -53,7 +54,7 @@ const Skills = () => {
         </div>
 
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto mb-20"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -92,9 +93,12 @@ const Skills = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        <TechMarquee />
       </div>
     </section>
   );
 };
 
 export default Skills;
+
