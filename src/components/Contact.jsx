@@ -14,23 +14,23 @@ const Contact = () => {
 
     // Replace these with your own EmailJS service ID, template ID, and public key
     // You can get them from https://www.emailjs.com/
-    const SERVICE_ID = "service_xxxxxxx"; 
-    const TEMPLATE_ID = "template_xxxxxxx";
-    const PUBLIC_KEY = "your_public_key";
+    const SERVICE_ID = "service_5j8v5lq";
+    const TEMPLATE_ID = "template_phhytxm";
+    const PUBLIC_KEY = "yyMY2QjijjzE-zw1B";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
       .then((result) => {
         console.log(result.text);
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
-        
+
         setTimeout(() => {
           setStatus('idle');
         }, 3000);
       }, (error) => {
         console.log(error.text);
         setStatus('error');
-        
+
         setTimeout(() => {
           setStatus('idle');
         }, 3000);
@@ -44,10 +44,10 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 relative">
       <div className="absolute inset-0 bg-slate-100/50 dark:bg-slate-900/50 -skew-y-3 -z-10 border-y border-slate-200 dark:border-slate-800"></div>
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,7 +55,7 @@ const Contact = () => {
           >
             Get In <span className="text-emerald-400">Touch</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -66,7 +66,7 @@ const Contact = () => {
           </motion.p>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -75,7 +75,7 @@ const Contact = () => {
         >
           <AnimatePresence>
             {status === 'success' && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
@@ -88,7 +88,7 @@ const Contact = () => {
             )}
 
             {status === 'error' && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
@@ -130,7 +130,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            
+
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
               <textarea
