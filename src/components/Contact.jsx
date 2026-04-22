@@ -15,7 +15,7 @@ const Contact = () => {
     // Replace these with your own EmailJS service ID, template ID, and public key
     // You can get them from https://www.emailjs.com/
     const SERVICE_ID = "service_5j8v5lq";
-    const TEMPLATE_ID = "template_phhytxm";
+    const TEMPLATE_ID = "template_f5usnl1";
     const PUBLIC_KEY = "yyMY2QjijjzE-zw1B";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
